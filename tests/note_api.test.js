@@ -130,7 +130,7 @@ describe("when there is initially one user in db", () => {
     };
 
     await api
-      .post("api/users")
+      .post("/api/users")
       .send(newUser)
       .expect(201)
       .expect("Content-Type", /application\/json/);
@@ -138,7 +138,7 @@ describe("when there is initially one user in db", () => {
     const usersAtEnd = await helper.usersInDb();
     expect(usersAtEnd).toHaveLength(usersAtStart.length + 1);
 
-    const usernames = usersAtEnd.map((u) => u.username);
+    const usernames = usersAtEnd.map((user) => user.username);
     expect(usernames).toContain(newUser.username);
   });
 
